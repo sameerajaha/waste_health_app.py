@@ -1,0 +1,229 @@
+import tkinter as tk
+from tkinter import messagebox
+
+# ---------------- Main Window ---------------- #
+
+root = tk.Tk()
+root.title("Waste Management & Health Awareness")
+root.geometry("650x600")
+root.configure(bg="#E8F5E9")
+
+# ---------------- Functions ---------------- #
+
+def waste_management():
+    info = """
+WASTE MANAGEMENT GUIDELINES
+
+🟢 Green Bin - Wet Waste
+• Food leftovers
+• Vegetable and fruit peels
+• Garden waste
+
+🔵 Blue Bin - Dry Waste
+• Paper
+• Plastic
+• Glass
+• Metal
+
+🔴 Hazardous Waste
+• Batteries
+• Chemicals
+• Medical waste
+• Electronic waste
+
+Tips:
+• Separate wet and dry waste.
+• Avoid single-use plastics.
+• Reuse and recycle whenever possible.
+• Keep your surroundings clean.
+"""
+    show_info("Waste Management", info)
+
+
+def health_awareness():
+    info = """
+HEALTH AWARENESS TIPS
+
+💧 Stay hydrated
+• Drink enough clean water every day.
+
+🥗 Eat Healthy
+• Include fruits and vegetables in your diet.
+• Avoid excessive junk food.
+
+🏃 Exercise
+• Exercise regularly to maintain fitness.
+
+😴 Sleep
+• Get adequate sleep and maintain a regular
+  sleeping schedule.
+
+🧼 Hygiene
+• Wash your hands regularly.
+• Keep your surroundings clean.
+
+🩺 Health Checkups
+• Have regular health checkups.
+• Consult a qualified healthcare professional
+  when you have health concerns.
+"""
+    show_info("Health Awareness", info)
+
+
+def awareness():
+    info = """
+ENVIRONMENT & HEALTH AWARENESS
+
+🌱 Keep your environment clean.
+
+♻️ Follow the 3 R's:
+   Reduce - Reduce unnecessary waste.
+   Reuse   - Reuse items whenever possible.
+   Recycle - Recycle suitable materials.
+
+🌍 Plant trees and protect natural resources.
+
+🚯 Do not throw waste in public places.
+
+🧴 Avoid unnecessary plastic usage.
+
+🧼 Maintain personal and environmental hygiene.
+
+Together, small actions can create a cleaner,
+healthier and safer community.
+"""
+    show_info("Awareness", info)
+
+
+def show_info(title, text):
+    window = tk.Toplevel(root)
+    window.title(title)
+    window.geometry("550x500")
+    window.configure(bg="white")
+
+    heading = tk.Label(
+        window,
+        text=title,
+        font=("Arial", 20, "bold"),
+        bg="white",
+        fg="#2E7D32"
+    )
+    heading.pack(pady=15)
+
+    text_box = tk.Text(
+        window,
+        font=("Arial", 12),
+        wrap="word",
+        bg="#F5F5F5",
+        padx=15,
+        pady=15
+    )
+    text_box.pack(fill="both", expand=True, padx=20, pady=10)
+
+    text_box.insert("1.0", text)
+    text_box.config(state="disabled")
+
+    close_button = tk.Button(
+        window,
+        text="Close",
+        command=window.destroy,
+        font=("Arial", 11, "bold"),
+        bg="#4CAF50",
+        fg="white",
+        padx=20,
+        pady=8
+    )
+    close_button.pack(pady=15)
+
+
+def about_app():
+    messagebox.showinfo(
+        "About",
+        "Waste Management & Health Awareness App\n\n"
+        "Developed using Python and Tkinter.\n\n"
+        "The application provides basic information "
+        "about waste segregation, environmental "
+        "cleanliness and healthy living."
+    )
+
+
+# ---------------- Header ---------------- #
+
+title = tk.Label(
+    root,
+    text="Waste Management & Health Awareness",
+    font=("Arial", 22, "bold"),
+    bg="#E8F5E9",
+    fg="#1B5E20"
+)
+title.pack(pady=25)
+
+subtitle = tk.Label(
+    root,
+    text="Clean Environment • Healthy Life • Better Future",
+    font=("Arial", 12),
+    bg="#E8F5E9",
+    fg="#555555"
+)
+subtitle.pack(pady=5)
+
+
+# ---------------- Buttons ---------------- #
+
+button_frame = tk.Frame(root, bg="#E8F5E9")
+button_frame.pack(pady=30)
+
+btn_style = {
+    "font": ("Arial", 13, "bold"),
+    "width": 25,
+    "height": 2,
+    "bg": "#4CAF50",
+    "fg": "white",
+    "activebackground": "#388E3C",
+    "activeforeground": "white"
+}
+
+tk.Button(
+    button_frame,
+    text="♻ Waste Management",
+    command=waste_management,
+    **btn_style
+).pack(pady=10)
+
+tk.Button(
+    button_frame,
+    text="❤ Health Awareness",
+    command=health_awareness,
+    **btn_style
+).pack(pady=10)
+
+tk.Button(
+    button_frame,
+    text="🌱 Environmental Awareness",
+    command=awareness,
+    **btn_style
+).pack(pady=10)
+
+tk.Button(
+    button_frame,
+    text="ℹ About App",
+    command=about_app,
+    **btn_style
+).pack(pady=10)
+
+
+# ---------------- Footer ---------------- #
+
+footer = tk.Label(
+    root,
+    text="Promoting a cleaner environment and healthier community",
+    font=("Arial", 10, "italic"),
+    bg="#E8F5E9",
+    fg="#555555"
+)
+footer.pack(side="bottom", pady=20)
+
+
+# ---------------- Run Application ---------------- #
+
+root.mainloop()
